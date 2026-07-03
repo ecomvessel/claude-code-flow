@@ -1,0 +1,17 @@
+name: validate
+
+# Practice what the README preaches: every push/PR runs an automated check.
+# For this docs repo the check is structure + link integrity (see scripts/validate.sh).
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate structure and links
+        run: bash scripts/validate.sh

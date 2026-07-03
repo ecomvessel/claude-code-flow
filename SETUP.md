@@ -10,6 +10,11 @@ branch → PR → merge flow.
 > behavior comes from the agent following the prose. It works reliably in practice, but it's
 > conventions, not enforcement. The real enforcement layer is GitHub branch protection + CI (Step 5).
 
+## Fast path
+`./install.sh` automates Steps 1 and 3 below (safely — it never overwrites an existing
+`~/.claude/CLAUDE.md`; if you have one, it installs alongside and prints the line to add). Prefer
+doing it by hand? Follow the steps. Either way you still fill in placeholders and add enforcement (Step 5).
+
 ## Prerequisites
 - Claude Code installed and working (`claude` runs in your terminal).
 - A Claude plan that gives you more than one model tier (so "delegate down / escalate up" is real).

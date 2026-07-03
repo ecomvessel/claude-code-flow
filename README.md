@@ -1,18 +1,26 @@
 # Claude Code Flow — one seat, auto-delegating agents, safe shipping
 
-A portable set of instruction files that turn [Claude Code](https://claude.com/claude-code) into a
-disciplined team: you sit in one model, it **delegates cheap work down automatically**, **asks before
-using the expensive model or shipping to production**, and runs every change through a safe
-**branch → PR → merge** flow with a plain-English safety check.
+A drop-in **operating layer for [Claude Code](https://claude.com/claude-code)**: you sit in one
+model, it **delegates cheap work down automatically**, **asks before using the expensive model or
+shipping to production**, and runs every change through a safe **branch → PR → merge** flow with a
+plain-English safety check.
 
-> **Read this first — what this is and isn't.** These files are a *policy the model follows
-> reliably* — not a technical control. An LLM reading rules can still misfire or be prompted around
-> them. This isn't automation replacing judgment; it's automation that never gets to skip the
-> judgment step — and the hard enforcement underneath it is **GitHub branch protection + CI**
-> ([SETUP.md](./SETUP.md) Step 5). Run both layers: the policy makes the agent fast and disciplined;
-> branch protection makes the discipline unskippable.
+> **This is not a plugin.** It's a portable **instruction pack** (Markdown rule files the agent
+> reads and follows) **plus recommended GitHub enforcement.** The rules make the agent fast and
+> disciplined; the enforcement — **branch protection + CI** on your production repos — makes the
+> discipline unskippable. An LLM following prose can still misfire, so run both layers: the policy is
+> the habit, branch protection is the wall.
 
-**→ [SETUP.md](./SETUP.md) for install steps.** Templates live in [`templates/`](./templates).
+## Quickstart
+```bash
+git clone https://github.com/ecomvessel/claude-code-flow   # or your fork
+cd claude-code-flow
+./install.sh            # safe: never overwrites an existing ~/.claude/CLAUDE.md
+```
+Then open the installed file and replace the `<PLACEHOLDER>`s (your model tiers + production repos).
+- **New to this?** See filled-in [`examples/`](./examples) before writing your own.
+- **Setting model roles?** See [`MODEL_TIERS.md`](./MODEL_TIERS.md).
+- **Full walkthrough + the enforcement step?** See [`SETUP.md`](./SETUP.md).
 
 ---
 
@@ -47,14 +55,14 @@ Everything cheaper than that just runs.
 ```
 Never for routine coding. ~20% of work, tops.
 
-### 3.5 Nothing is "done" until it's proven
+### 4. Nothing is "done" until it's proven
 Before any build is called done, it self-verifies against a **Definition of Done** (build/lint/tests
 pass, DB queried to confirm data, APIs/crons exercised, UI checked as a user *and* matched against the
 DB). Then a **fresh independent subagent** — one that didn't write the code — adversarially tries to
 break it, and fixes loop until it comes back clean. The independence comes from the fresh context, so
 it's automatic (no second vendor required).
 
-### 4. Safety rails on every change
+### 5. Safety rails on every change
 ```
 PROPER-FLOW (production repos):  branch → PR → merge → auto-deploy → verify
 FAST LANE  (marketing/staging):  smaller, quicker, lower stakes
@@ -74,6 +82,9 @@ You answer one question: **"ship it or not?"** — with the evidence attached.
 ## Honest limits (read before you rely on it)
 - These files are **conventions the model follows reliably — not hard enforcement.** The real
   backstop is **GitHub branch protection + CI** ([SETUP.md](./SETUP.md) Step 5). Add it on production repos.
+- **This repo demonstrates the pattern, it doesn't do it for you.** The `validate` workflow here just
+  checks these docs; *your* production repos need their own branch protection + CI running *your*
+  tests. Copy the habit, not this repo's checks.
 - Auto-merge exists only on low-stakes repos AND only behind a passed automated check (CI or local
   build/test). No check = no auto-merge. Production always needs an explicit human `go`, given
   against a diff-derived summary and file list — not the model's unverified opinion.
