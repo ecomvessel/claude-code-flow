@@ -2,14 +2,14 @@
 # quick-install.sh — one-command installer for people who have not cloned this repo.
 #
 # Usage:
-#   curl -fsSL https://raw.githubusercontent.com/ecomvessel/claude-code-flow/main/quick-install.sh | bash
-#   curl -fsSL https://raw.githubusercontent.com/ecomvessel/claude-code-flow/main/quick-install.sh | bash -s -- --repo
+#   curl -fsSL https://raw.githubusercontent.com/ecomvessel/claude-code-model-switch/main/quick-install.sh | bash
+#   curl -fsSL https://raw.githubusercontent.com/ecomvessel/claude-code-model-switch/main/quick-install.sh | bash -s -- --repo
 #
 # Optional for forks/testing:
-#   CCF_REPO=your-org/claude-code-flow CCF_REF=your-branch bash quick-install.sh
+#   CCF_REPO=your-org/claude-code-model-switch CCF_REF=your-branch bash quick-install.sh
 set -euo pipefail
 
-CCF_REPO="${CCF_REPO:-ecomvessel/claude-code-flow}"
+CCF_REPO="${CCF_REPO:-ecomvessel/claude-code-model-switch}"
 CCF_REF="${CCF_REF:-main}"
 caller_dir="$PWD"
 
@@ -29,10 +29,10 @@ cleanup() {
 }
 trap cleanup EXIT
 
-archive="$tmpdir/claude-code-flow.tar.gz"
+archive="$tmpdir/claude-code-model-switch.tar.gz"
 archive_url="https://github.com/${CCF_REPO}/archive/${CCF_REF}.tar.gz"
 
-echo "Claude Code Flow — quick install"
+echo "Claude Code Model Switch — quick install"
 echo "Downloading ${CCF_REPO}@${CCF_REF}..."
 
 curl -fsSL "$archive_url" -o "$archive"

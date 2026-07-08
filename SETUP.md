@@ -14,17 +14,17 @@ branch → PR → merge flow.
 Fastest: install a **preset** — model roles pre-filled for your plan, no editing needed
 (see [`presets/`](./presets/README.md) to pick: `fable-5`, `opus-4-8`, `sonnet-5`):
 ```bash
-curl -fsSL https://raw.githubusercontent.com/ecomvessel/claude-code-flow/main/quick-install.sh | bash -s -- --preset fable-5
+curl -fsSL https://raw.githubusercontent.com/ecomvessel/claude-code-model-switch/main/quick-install.sh | bash -s -- --preset fable-5
 ```
 
 Or just the blank global rules (you fill in the `<PLACEHOLDER>`s after):
 ```bash
-curl -fsSL https://raw.githubusercontent.com/ecomvessel/claude-code-flow/main/quick-install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/ecomvessel/claude-code-model-switch/main/quick-install.sh | bash
 ```
 
 Security-conscious install: download, inspect, then run:
 ```bash
-curl -fsSL https://raw.githubusercontent.com/ecomvessel/claude-code-flow/main/quick-install.sh -o quick-install.sh
+curl -fsSL https://raw.githubusercontent.com/ecomvessel/claude-code-model-switch/main/quick-install.sh -o quick-install.sh
 less quick-install.sh
 bash quick-install.sh
 ```
@@ -32,12 +32,12 @@ bash quick-install.sh
 If you are already inside a production repo and also want a per-repo `CLAUDE.md` template dropped
 there:
 ```bash
-curl -fsSL https://raw.githubusercontent.com/ecomvessel/claude-code-flow/main/quick-install.sh | bash -s -- --repo
+curl -fsSL https://raw.githubusercontent.com/ecomvessel/claude-code-model-switch/main/quick-install.sh | bash -s -- --repo
 ```
 
 To pin a fork, branch, or release tag after downloading the script:
 ```bash
-CCF_REPO=ecomvessel/claude-code-flow CCF_REF=main bash quick-install.sh
+CCF_REPO=ecomvessel/claude-code-model-switch CCF_REF=main bash quick-install.sh
 ```
 
 The quick installer downloads this repo to a temp directory and runs `./install.sh`, which automates
