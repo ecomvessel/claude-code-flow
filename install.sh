@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# install.sh — set up Claude Code Flow WITHOUT clobbering your existing config.
+# install.sh — set up Claude Code Model Switch WITHOUT clobbering your existing config.
 #
 #   ./install.sh                      # blank template: edit <PLACEHOLDER>s after install
 #   ./install.sh --preset fable-5     # pre-filled config, works as installed (see presets/)
@@ -13,7 +13,7 @@ CALLER_DIR="$PWD"                 # where the user ran the command (for --repo)
 cd "$(dirname "$0")"             # repo dir, so template paths resolve
 CLAUDE_DIR="$HOME/.claude"
 GLOBAL_SRC="templates/CLAUDE.global.md"
-SIDE_FILE="$CLAUDE_DIR/claude-code-flow.md"
+SIDE_FILE="$CLAUDE_DIR/claude-code-model-switch.md"
 MAIN_FILE="$CLAUDE_DIR/CLAUDE.md"
 
 list_presets() {
@@ -47,7 +47,7 @@ if [ -n "$preset" ]; then
   GLOBAL_SRC="presets/$preset/CLAUDE.md"
 fi
 
-echo "Claude Code Flow — installer"
+echo "Claude Code Model Switch — installer"
 [ -n "$preset" ] && echo "Using preset: $preset (pre-filled — works as installed)"
 echo
 
@@ -66,7 +66,7 @@ else
   echo "      $SIDE_FILE"
   echo
   echo "  To activate, add this line near the top of your ~/.claude/CLAUDE.md:"
-  echo "      > See ./claude-code-flow.md for model-routing + safe-shipping rules."
+  echo "      > See ./claude-code-model-switch.md for model-routing + safe-shipping rules."
   echo "  (Or copy the sections you want out of that file by hand.)"
   target_to_edit="$SIDE_FILE"
 fi

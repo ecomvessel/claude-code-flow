@@ -12,7 +12,7 @@ Each preset is a **ready-to-use global `CLAUDE.md`** with the model roles alread
 Install one directly:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/ecomvessel/claude-code-flow/main/quick-install.sh | bash -s -- --preset fable-5
+curl -fsSL https://raw.githubusercontent.com/ecomvessel/claude-code-model-switch/main/quick-install.sh | bash -s -- --preset fable-5
 ```
 
 Or from a clone: `./install.sh --preset fable-5` (add `--repo` to also drop a per-repo template).

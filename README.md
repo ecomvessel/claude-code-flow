@@ -1,4 +1,4 @@
-# Claude Code Flow — one seat, auto-delegating agents, safe shipping
+# Claude Code Model Switch — one seat, auto-delegating agents, safe shipping
 
 A drop-in **operating layer for [Claude Code](https://claude.com/claude-code)**: you sit in one
 model, it **delegates cheap work down automatically**, **asks before using the expensive model or
@@ -15,7 +15,7 @@ plain-English safety check.
 
 **Fastest: pick a preset** — model roles pre-filled for your plan, zero editing, works as installed:
 ```bash
-curl -fsSL https://raw.githubusercontent.com/ecomvessel/claude-code-flow/main/quick-install.sh | bash -s -- --preset fable-5
+curl -fsSL https://raw.githubusercontent.com/ecomvessel/claude-code-model-switch/main/quick-install.sh | bash -s -- --preset fable-5
 ```
 | Preset | Pick this if… |
 |--------|---------------|
@@ -27,30 +27,30 @@ What each preset routes where, and when to switch: [`presets/`](./presets/README
 
 **Or install the blank template** and fill in your own model names:
 ```bash
-curl -fsSL https://raw.githubusercontent.com/ecomvessel/claude-code-flow/main/quick-install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/ecomvessel/claude-code-model-switch/main/quick-install.sh | bash
 ```
 Then open the installed file and replace the `<PLACEHOLDER>`s (your model tiers + production repos).
 
 Review first, then run (works with `--preset` too):
 ```bash
-curl -fsSL https://raw.githubusercontent.com/ecomvessel/claude-code-flow/main/quick-install.sh -o quick-install.sh
+curl -fsSL https://raw.githubusercontent.com/ecomvessel/claude-code-model-switch/main/quick-install.sh -o quick-install.sh
 less quick-install.sh
 bash quick-install.sh
 ```
 
 Or clone it first:
 ```bash
-git clone https://github.com/ecomvessel/claude-code-flow   # or your fork
-cd claude-code-flow
+git clone https://github.com/ecomvessel/claude-code-model-switch   # or your fork
+cd claude-code-model-switch
 ./install.sh            # safe: never overwrites an existing ~/.claude/CLAUDE.md
 ```
 To also drop a per-repo `CLAUDE.md` template into the current directory:
 ```bash
-curl -fsSL https://raw.githubusercontent.com/ecomvessel/claude-code-flow/main/quick-install.sh | bash -s -- --repo
+curl -fsSL https://raw.githubusercontent.com/ecomvessel/claude-code-model-switch/main/quick-install.sh | bash -s -- --repo
 ```
 To pin a fork, branch, or release tag:
 ```bash
-CCF_REPO=ecomvessel/claude-code-flow CCF_REF=main bash quick-install.sh
+CCF_REPO=ecomvessel/claude-code-model-switch CCF_REF=main bash quick-install.sh
 ```
 - **New to this?** See filled-in [`examples/`](./examples) before writing your own.
 - **Setting model roles?** See [`MODEL_TIERS.md`](./MODEL_TIERS.md).
